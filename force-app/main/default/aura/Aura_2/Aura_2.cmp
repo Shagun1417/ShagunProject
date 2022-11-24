@@ -1,0 +1,26 @@
+<!---->
+<!--Created a page that will show all accounts with its opportunity and Contacts in picklist value.-->
+<!--implements="flexipage:availableForRecordHome,force:hasRecordId" access="global"-->
+<aura:component controller= "Aura_2">
+    <aura:attribute name="accList" type="List"/>
+        <aura:attribute name="accId1" type="Id"/>
+        <aura:attribute name="conList" type="List"/>
+
+
+    <aura:handler name = "init" value= "{!this}" action ="{!c.doInit}"/>
+    
+    <lightning:select name="select1" label="Select an Account" onchange="{}">
+        <option value="null">None</option>
+        <aura:iteration items="{!v.accList}" var="item">
+            <option value="{!item.Id}">{!item.Name}</option> 
+        </aura:iteration>
+   
+    </lightning:select>
+    
+    
+     <lightning:select name="select2" label="Contacts">
+        <aura:iteration items="{!v.accList}" var="item">
+        <option value="{!item.Id}">{!item.Name}</option> 
+        </aura:iteration>
+    </lightning:select>
+</aura:component>

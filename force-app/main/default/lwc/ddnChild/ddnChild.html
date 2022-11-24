@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="DDn child component">
+        <lightning-button label="PLUS" onclick={handlePlus}></lightning-button>
+        <lightning-button label="MINUS" onclick={handleMinus}></lightning-button>
+        <br><br>
+      
+        <lightning-button  label={showHide} variant={colorChange} onclick={handlerShow}> 
+            </lightning-button>
+
+            <template if:true={cardVissible}>
+                <lightning-button label="doubleMinusss" onclick={handleDMinus}></lightning-button>
+      </template>
+</lightning-card>
+</template>  

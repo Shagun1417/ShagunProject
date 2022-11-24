@@ -1,0 +1,32 @@
+<aura:component >
+       <aura:attribute name="options" type="List" default="[
+    {'label': 'New', 'value': 'new'},
+    {'label': 'In Progress', 'value': 'inProgress'},
+    {'label': 'Finished', 'value': 'finished'},
+    ]"/>
+
+
+    <lightning:card  title="Hello">
+  
+
+        
+        <lightning:layout>
+                  <lightning:combobox name="progress" variant= "label-hidden" value="inProgress" placeholder="Select Progress" options="{! v.options }" onchange="{! c.handleChange }"/>
+
+            <lightning:layoutItem padding="around-small">
+                <div class="custom-box"><lightning:button label="Neutral" title="Neutral action" /></div>
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="around-small">
+                <div class="custom-box">  <lightning:button variant="brand" label="Brand" title="Brand action" /></div>
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="around-small">
+                <div class="custom-box"></div>
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="around-small">
+                <div class="custom-box"></div>
+            </lightning:layoutItem>
+        </lightning:layout>
+        
+       
+    </lightning:card>
+</aura:component>

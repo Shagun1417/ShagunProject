@@ -1,0 +1,179 @@
+  <template>
+      <h2 id="element-with-table-label" class="slds-text-heading_medium slds-m-bottom_xx-small">Opportunities</h2>
+    
+      <table class="slds-table slds-table_cell-buffer slds-table_bordered" aria-labelledby="element-with-table-label other-element-with-table-label">
+        <thead>
+          <tr>
+            <th class="" scope="col" style="border:1px black solid">
+              <div class="slds-truncate" title="Opportunity Name">Opportunity Name</div>
+            </th>
+            <th class="" scope="col" style="border:1px black solid">
+              <div class="slds-truncate" title="Account Name">Account Name</div>
+            </th>
+            <th class="" scope="col" style="border:1px black solid">
+              <div class="slds-truncate" title="Close Date">Close Date</div>
+            </th> 
+            <!-- <th class="" scope="" style="border:1px black solid"> -->
+              <th aria-label="Stage" aria-sort="none"
+                        class="slds-has-button-menu slds-is-resizable slds-is-sortable" scope="col">
+                        <a class="slds-th__action slds-text-link_reset" href="#" role="button" tabindex="-1">
+
+                            <div class="slds-grid sld-wrap slds-align_absolte-center ">
+                                <div class="slds-size_1-of-2" style="margin-top:7px">
+                                    Stage Name
+                                </div>
+                                <div class="slds-size_1-of-2" style="margin-left:138px">
+
+                                    <lightning-button-icon icon-name="utility:chevrondown" onclick={showList}>
+                                    </lightning-button-icon>
+
+                                </div>
+                            </div>
+
+                        </a>
+            
+              <!-- <lightning-combobox  value={values} placeholder="Stage" options={options} onclick={handlerChanged}>
+            
+              </lightning-combobox> -->
+              <!-- <div class="slds-p-around_medium lgc-bg">
+                <lightning-button-menu alternative-text="Stage" menu-alignment="auto">
+                    <lightning-menu-item value={values} label="Closed won" prefix-icon-name="utility:bookmark" icon-name="utility:description"></lightning-menu-item>
+                
+                </lightning-button-menu>
+            </div> -->
+              
+            </th>
+          
+            <th class="" scope="col">
+              <div class="slds-truncate" title="Amount">Amount</div>
+            </th>
+          
+          </tr>
+        </thead>
+      <tbody>
+          <template for:each={data} for:item="opp">
+              <tr key={opp.Id} class="slds-hint-parent">
+              <th>{opp.Name}</th>
+                  <th>{opp.Account.Name}</th>
+                  <th>{opp.CloseDate}</th>
+                  <th>{opp.StageName}</th>
+                  <th>{opp.Amount}</th>
+            <th>
+                  <div class="slds-p-around_medium lgc-bg">
+                    <lightning-button-menu alternative-text="Show menu" menu-alignment="auto" onselect={editChange} value={placevalue}>
+                        <lightning-menu-item  value="edit" label="Edit"></lightning-menu-item>
+                        <lightning-menu-item value="delete" label="Delete" ></lightning-menu-item>
+                        <lightning-menu-item  value="View" label="View" ></lightning-menu-item>
+                        
+                    </lightning-button-menu>
+                </div>
+            </th> 
+
+              </tr>
+              </template>
+      </tbody>
+      </table>
+    
+      
+      <!-- <template if:true={buttonClick}>
+
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container" style="margin-left: 655px; margin-top: 70px; height: 600px; width: 180px;">
+            
+              <div class="slds-modal__content slds-p-around_medium" style="width: 200px; ">
+                <lightning-input label="All Record" type="checkbox" onchange={checkboxchange}></lightning-input>
+                <template if:false={allValue}>
+                    <template  for:each={options} for:item="opt">
+                        <lightning-input key={opt} label={opt} type="checkbox" onchange={checkboxchange}></lightning-input>
+                    </template>
+                    </template>
+  <template if:true={allValue}>
+                    <template  for:each={options} for:item="opt">
+                        <lightning-input key={opt} label={opt} type="checkbox" onchange={checkboxchange} checked></lightning-input>
+                    </template>
+                    </template>
+              </div>
+    
+              
+              <footer class="slds-modal__footer" style="width:180px">
+                <button class="slds-button slds-button_neutral" onclick={okHandler}>Ok</button>
+            
+                  <button class="slds-button slds-button_neutral" onclick={cancelHandler}>Cancel</button>
+              </footer>
+            
+            </div>
+        </section>
+        </template>
+
+
+        <template if:true={editrecord} >
+          <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+              <div class="slds-modal__container" style=" margin-top: 70px; height: 600px; width:600px;">
+            
+                <div class="slds-modal__content slds-p-around_medium" style="width: 600px; height:600px;">
+        
+            <lightning-record-form
+            object-api-name="Opportunity"
+            record-id={recordId} fields={nameField} columns="2" onsuccess={onsave} oncancel={oncancel} >
+            </lightning-record-form>
+        
+          </div>
+      </div>
+      </section>
+        </template>         
+        <template if:false={editrecord} >
+        </template>
+
+        <template if:true={viewrecord} >
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container" style=" margin-top: 70px; height: 600px; width:600px;">
+          
+                <div class="slds-modal__content slds-p-around_medium" style="width: 600px; height:600px;">
+        
+                <lightning-record-form
+                object-api-name="Opportunity"
+                record-id={recordId} fields={nameField} columns="2" onsuccess={onsave} oncancel={oncancel} >
+                </lightning-record-form>
+        
+        </div>
+    </div>
+    </section>
+        </template>  -->
+
+        <template if:true={showListForTemplate}>
+
+          <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+              <div class="slds-modal__container" style="height:600px;width:200px;margin-left:79%;margin-top:15px;">
+                  <div class="slds-modal__content slds-p-around_medium slds-box box-shadow: 0px 5px 5px black"
+                      id="modal-content-id-1" style="width:250px;border:1px solid">
+  
+                      <lightning-input type="checkbox" label="All select" onchange={selectedCheckBox}></lightning-input>
+  
+                      <template if:true={selectAllVar}>
+                          <template for:each={stageNamePickList} for:item="val">
+                              <lightning-input type="checkbox" key={val} label={val} checked onchange={selectedCheckBox}>
+                              </lightning-input>
+                          </template>
+                      </template>
+  
+                      <template if:false={selectAllVar}>
+                          <template for:each={stageNamePickList} for:item="val">
+                              <lightning-input type="checkbox" key={val} label={val} onchange={selectedCheckBox}>
+                              </lightning-input>
+                          </template>
+                      </template>
+  
+                  </div>
+  
+                  <!-- modal footer start-->
+                  <footer class="slds-modal__footer" style="width:250px;border:1px solid">
+                      <button class="slds-button slds-button_neutral" onclick={hideModalBox}>Cancel</button>
+                      <lightning-button label="Ok" onclick={handleOk} variant="brand"></lightning-button>
+                  </footer>
+  
+              </div>
+          </section>
+  
+      </template>
+
+  </template>

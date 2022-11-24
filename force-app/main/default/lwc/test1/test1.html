@@ -1,0 +1,13 @@
+<template>
+<lightning-card title="Test1">
+    
+<lightning-button label={onClickButtonLabel} variant="brand" onclick={handler}>
+</lightning-button>
+    </lightning-card>
+    <!-- dynamic data come on card visible if true then show data  -->
+<template if:true={cardVisible}>
+<lightning-card title="If:true/False">
+    {myTitle}
+</lightning-card>    
+</template>
+</template>

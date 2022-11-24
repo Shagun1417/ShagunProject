@@ -1,0 +1,8 @@
+<!--Create an aura component that will be used to create a new account with five field values.-->
+<aura:component >  
+	 <aura:attribute name="fields"
+                    type="String[]"
+                    default="['Name', 'Industry','Site','AccountSource','Phone']"/>
+    <lightning:recordForm objectApiName="Account"
+                          fields="{!v.fields}"/>
+</aura:component>

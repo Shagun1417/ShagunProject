@@ -1,0 +1,24 @@
+<template>
+    <lightning-card title="Calculator">
+
+        <div>
+            <lightning-input type="number" name="number1" label="Enter number 1" onchange={number1handler}></lightning-input>
+            <lightning-input type="number" name="number2" label="Enter number 2" onchange={number2handler}></lightning-input>
+
+        </div>
+        <br/>
+
+        <div>
+            <lightning-button variant="brand" label="ADD" title="Successful action" onclick={addClick}></lightning-button>
+            <lightning-button variant="brand" label="SUB" title="Successful action" onclick={subClick}></lightning-button>
+            <lightning-button variant="brand" label="MUL" title="Successful action" onclick={mulClick}></lightning-button>
+            <lightning-button variant="brand" label="DIV" title="Successful action" onclick={divClick}></lightning-button>
+ </div>
+<br/>
+<b>your result: {result}</b>
+        </lightning-card>
+
+       <lightning-card>
+   <c-ddn-Child-Component outcome={result}></c-ddn-Child-Component>
+            </lightning-card>
+</template>
