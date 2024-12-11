@@ -3,7 +3,7 @@ public class AccountRelatedObj {
     @auraEnabled
     public static List<Account> fetchAccount()
     {
-        List<Account> accList=[SELECT Id,Name FROM Account LIMIT 10];
+        List<Account> accList=[SELECT Id,Name FROM Account LIMIT 9];
         return accList;
     }
     @auraEnabled
