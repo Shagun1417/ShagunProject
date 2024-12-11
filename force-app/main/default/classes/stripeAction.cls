@@ -3,7 +3,7 @@ public with sharing class stripeAction {
     @AuraEnabled(cacheable=true)
     public static List<String> myMethod(string ids){
         List<string> str= new List<String>();
-        system.debug('rwecord id'+ids);
+        system.debug('record id'+ids);
 
        try{
         Account acc1 = [Select name, id, Consumer_Id__c from Account where id = : ids];
